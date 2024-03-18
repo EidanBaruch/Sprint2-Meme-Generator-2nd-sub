@@ -1,0 +1,153 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    
+    background-image: url('/img/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.memes-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    color: #000;
+    background-color: #fff;
+}
+
+.meme-filter > fieldset {
+    position: sticky;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 10px;
+    margin: 10px;
+    color: #000;
+}
+
+.meme-btn {
+    padding: 3px;
+    margin: 4px;
+}
+
+.actions {
+    color: #000;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
+}
+
+.actions > button {
+
+    margin: 10px;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* border: 1px #919191 solid; */
+    /* color: white; */
+}
+
+.hero p {
+    font-size: 1.4rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#memeCanvas {
+    display: none;
+    border: 2px #000 solid;
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+}
+
+#memeEditor {
+    display: none;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    border-radius: 50px;
+    background-color: #e4e4e4be;
+    box-shadow: 0px 3px 40px #363636d3;
+}
+
+#memeEditor > .close-btn {
+
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(20px, 1fr) minmax(auto, 1060px) minmax(20px, 1fr);
+}
+
+.main-layout > *:not(.full) {
+    grid-column: 2;
+}
+
+.main-layout > *.full {
+    grid-column: 1 / -1;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(1, 3fr);
+    gap: 10px;
+    margin: 10px;
+    border: 2px #000 solid;
+    border-radius: 60px;
+    background-color: #eee;
+}
+
+.card > img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 60px;
+}
+
+#memeEditor > img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
+
+#memeEditor > img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+  
+
+
+@media only screen and (max-width: 600px) {
+    .memes-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+ 
+    .card {
+        max-width: 100%;
+    }
+}

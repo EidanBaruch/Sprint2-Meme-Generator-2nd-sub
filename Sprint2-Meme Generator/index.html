@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+		<link rel="stylesheet" href="css/styles.css"/>
+		<title>Meme Generator</title>
+	</head>
+
+	<body onload="onInit()">
+        <div class="main-layout">
+		<h1>Ultimate Meme Generator</h1>
+        
+        <div id="memeEditor">
+            <canvas id="memeCanvas" width="450" height="450"></canvas>
+            <button class="close-btn" onclick="toggleEditor(false)">X</button>
+        </div>
+
+		<section class="meme-filter">
+			<fieldset>
+                <legend>Filter & Sorting</legend>
+                <input oninput="onSetFilterBy({category: this.value})" type="search" placeholder="Search.." class="search">
+            
+                <div class="filter-by">
+                    <select class="category-list" onchange="onSetFilterBy({category: this.value})">
+                        <option value="">Select Category</option>
+                        <option>Sarcastic</option>
+                        <option>Animals</option>
+                        <option>Babies</option>
+                        <option>Cute</option>
+                    </select>
+                    
+                    <label>
+                        <span>Rating:</span>
+                        <input type="range" min="0" max="300" value="50" 
+                               onchange="this.title=this.value;onSetFilterBy({rating: this.value})"/>
+                    </label>
+                </div>
+                
+                <div class="sort-by">
+                    <select onchange="onSetSortBy()">
+                        <option value="">Select Sorting</option>
+                        <option value="category">By Category</option>
+                        <option value="rating">By Rating</option>
+                    </select>
+                    <label>
+                        <span>Descending</span>
+                        <input class="sort-desc" type="checkbox" oninput="onSetSortBy()"/>
+                    </label>
+                </div>
+            </fieldset> 
+
+		</section>
+
+		<section>
+            <div class="actions">
+                <button title="Previous Page" onclick="onNextPage()">Previous Page</button>
+                <button title="Add Meme" onclick="onAddMeme()">Add Meme</button>
+                <button title="Next Page" onclick="onNextPage()">Next Page</button>
+            </div>
+
+            <hero class="hero">
+	            <section class="memes-container"></section>
+            </hero>
+		</section>
+
+		<dialog class="modal">
+			<h3></h3>
+			<h4>Rating<span></span> </h4>
+            <img src="" alt="">
+			<p></p>
+			<button onclick="onCloseModal()">Close</button>
+		</dialog>
+
+        <dialog class="meme-edit-modal">
+            <form onsubmit="onSaveMeme()" method="dialog">
+                <h2>Add Meme</h2>
+                <img src="" alt="">
+                <select class="category-list" onchange="onSelectCategory(this)">
+                    <option value="">Choose category...</option>
+                    <option>Sarcastic</option>
+                    <option>Animals</option>
+                    <option>Babies</option>
+                    <option>Cute</option>
+                    <!-- TODO: Add more categories -->
+                </select>
+                <input class="rating" placeholder="Enter keywords">
+                <div class="actions">
+                    <button type="button" onclick="onCloseMemeEdit()">Cancel</button>
+                    <button>Save</button>
+                </div>
+            </form>
+        </dialog>
+        
+        <div class="user-msg"></div>
+
+        <script src="js/services/util.service.js"></script>
+        <script src="js/services/storage.service.js"></script>
+        <script src="js/services/meme.service.js"></script>
+		<script src="js/controller/meme.controller.js"></script>
+        
+        </div>
+	</body>
+</html>
